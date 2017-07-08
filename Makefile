@@ -117,7 +117,7 @@ C_SRCS_TEST = $(wildcard $(patsubst %, %/*.$(C_EXT), . $(TEST_SRCS_DIRS)))
 #=============================================================================#
 
 COMPORT = $(word 1, $(wildcard /dev/tty.usbserial-*) $(wildcard /dev/ttyUSB*))
-BAUDRATE = 115200
+BAUDRATE = 9600
 CLOCK_OSC = 0
 
 #=============================================================================#
@@ -359,7 +359,7 @@ lint: $(C_SRCS)
 
 writeflash: all
 	@echo "Writing to" $(COMPORT)
-	lpc21isp -NXPARM -control $(HEX) $(COMPORT) $(BAUDRATE) $(CLOCK_OSC)
+	lpc21isp -NXPARM -control $(HEX) $(COMPORT) 57600 $(CLOCK_OSC)
 
 #-----------------------------------------------------------------------------#
 # Open up in picocom
